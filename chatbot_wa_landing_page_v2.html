@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatBot WA</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green: #25D366;
+    --green-dark: #128C7E;
+    --green-light: #dcfce7;
+    --accent: #FF6B35;
+    --accent-light: #fff3ef;
+    --dark: #0a1628;
+    --dark2: #1a2744;
+    --text: #334155;
+    --muted: #64748b;
+    --white: #fff;
+    --border: #e2e8f0;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f8fafc;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0d7a4e 0%, #128C7E 50%, #0a6b3d 100%);
+    color: white;
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .badge-new {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 7vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .wa-icon-big {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .pricing-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .price-label { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: line-through; }
+  .price-label.active { color: rgba(255,255,255,0.85); text-decoration: none; }
+  .price-amount { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.4); text-decoration: line-through; }
+  .price-amount.active { text-decoration: none; color: white; font-size: 18px; }
+  .price-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 10px 0; }
+  .price-highlight {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .price-highlight .label { font-size: 12px; font-weight: 600; opacity: 0.85; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+  .price-highlight .amount { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; }
+  .price-highlight .sub { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+  .timer-pill {
+    display: inline-block;
+    background: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 48px 0 0; }
+  .section-title { font-size: 22px; font-weight: 800; color: var(--dark); text-align: center; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .section-sub { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+
+  .feature-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .feature-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .feature-title { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 2px; }
+  .feature-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .terms-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-top: 16px;
+  }
+  .terms-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .terms-row:last-child { border-bottom: none; }
+  .terms-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .terms-text { color: var(--text); line-height: 1.5; }
+  .terms-text strong { color: var(--dark); }
+  .addon-box {
+    background: var(--accent-light);
+    border: 1px dashed #ffb89a;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .addon-icon { font-size: 22px; }
+  .addon-text { color: var(--text); }
+  .addon-text strong { color: #c94a1a; }
+
+  .cta-section { padding: 48px 0 60px; text-align: center; }
+  .cta-card {
+    background: var(--dark);
+    border-radius: 24px;
+    padding: 36px 24px;
+    color: white;
+  }
+  .cta-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .cta-card p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .btn-wa:hover { transform: scale(1.03); opacity: 0.93; }
+  .wa-num { display: block; margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .trial-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .trial-note strong { color: rgba(255,255,255,0.85); }
+
+  .steps { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--green-dark);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-text { color: var(--text); padding-top: 3px; }
+  .step-text strong { color: var(--dark); display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="wa-icon-big">💬</span>
+  <div class="badge-new">🔥 Penawaran Terbatas</div>
+  <h1>Chatbot WhatsApp</h1>
+  <p>Balas customer otomatis 24 jam, tanpa perlu staff tambahan. Siap pakai, langsung aktif.</p>
+
+  <div class="pricing-wrap">
+    <div class="price-row">
+      <span class="price-label">Harga Normal</span>
+      <span class="price-amount">Rp 1.000.000</span>
+    </div>
+    <hr class="price-divider">
+    <div class="price-row">
+      <span class="price-label active">Diskon Bulan Ini</span>
+      <span class="price-amount active">Rp 500.000</span>
+    </div>
+    <hr class="price-divider">
+    <div class="price-highlight">
+      <div class="label">⚡ Bayar Hari Ini</div>
+      <div class="amount">Rp 350.000</div>
+      <div class="sub">Hemat Rp 650.000 dari harga normal!</div>
+    </div>
+    <div>
+      <span class="timer-pill">⏰ Hanya hari ini</span>
+    </div>
+  </div>
+</div>
+
+<div style="background: #f8fafc; padding-bottom: 8px;">
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">Apa yang Anda Dapat?</div>
+    <div class="section-sub">Chatbot WA siap pakai untuk bisnis Anda</div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <div>
+        <div class="feature-title">Balas Chat Otomatis 24 Jam</div>
+        <div class="feature-desc">Chatbot aktif terus meski Anda tidur. Pelanggan tetap terlayani kapan saja.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <div>
+        <div class="feature-title">Bisa Ganti Nama PT Anda</div>
+        <div class="feature-desc">Chatbot langsung pakai nama bisnis Anda sendiri. Mudah dan cepat.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📲</div>
+      <div>
+        <div class="feature-title">Langsung Aktif di WA</div>
+        <div class="feature-desc">Tidak perlu instalasi rumit. Terima jadi, langsung terhubung ke WhatsApp Anda.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Syarat & Ketentuan</div>
+    <div class="section-sub">Transparan, tanpa biaya tersembunyi</div>
+
+    <div class="terms-box">
+      <div class="terms-row">
+        <span class="terms-icon">✅</span>
+        <div class="terms-text"><strong>Yang bisa diubah:</strong> Nama PT / usaha Anda. Chatbot langsung menyesuaikan.</div>
+      </div>
+      <div class="terms-row">
+        <span class="terms-icon">🔒</span>
+        <div class="terms-text"><strong>Yang tidak bisa diubah:</strong> Konten, alur, dan template chatbot tetap sama persis.</div>
+      </div>
+      <div class="terms-row">
+        <span class="terms-icon">🏷️</span>
+        <div class="terms-text"><strong>Jenis bisnis:</strong> Template standar untuk bisnis <strong>otomotif</strong>. Cocok untuk dealer, showroom, dan bengkel.</div>
+      </div>
+    </div>
+
+    <div class="addon-box">
+      <span class="addon-icon">➕</span>
+      <div class="addon-text">
+        Beda jenis bisnis (non-otomotif)? Tambah <strong>Rp 150.000</strong> untuk penyesuaian template ke bidang usaha Anda.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Cara Mulai</div>
+    <div class="section-sub">3 langkah simpel, selesai dalam hitungan menit</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Mau coba dulu? Trial gratis!</strong>
+          Kirim pesan WA ke nomor di bawah. Tulis <em>"Chat Bot"</em> untuk mulai trial.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Konfirmasi & transfer</strong>
+          Sepakat? Lakukan pembayaran dan kirim bukti transfer.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Chatbot aktif!</strong>
+          Kami setup chatbot dengan nama bisnis Anda. Langsung bisa dipakai.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-card">
+      <h2>Mulai Sekarang, Bayar Rp 350rb</h2>
+      <p>Atau coba dulu gratis — kirim WA sekarang dan rasakan sendiri!</p>
+      <a class="btn-wa" href="https://wa.me/6288905335709?text=Chat%20Bot" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat WhatsApp Sekarang
+      </a>
+      <span class="wa-num">0889-0533-5709</span>
+      <div class="trial-note">
+        💡 Kirim pesan <strong>"Chat Bot"</strong> untuk mulai trial gratis dulu sebelum beli
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
