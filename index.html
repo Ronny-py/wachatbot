@@ -245,9 +245,199 @@
   }
   .step-text { color: var(--text); padding-top: 3px; }
   .step-text strong { color: var(--dark); display: block; margin-bottom: 2px; }
+
+  /* Promo section */
+  .promo-section {
+    background: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .promo-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+  .promo-headline {
+    font-size: clamp(24px, 6vw, 38px);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .promo-headline span { color: var(--green-dark); }
+  .promo-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 460px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .stat-pill {
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1px solid #bbf7d0;
+  }
+  .illus-wrap {
+    margin: 0 auto 12px;
+    max-width: 340px;
+  }
+  .pain-points {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .pain-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .pain-item .pain-icon { font-size: 20px; flex-shrink: 0; }
+  .section-divider {
+    text-align: center;
+    padding: 10px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .arrow-down {
+    display: block;
+    font-size: 22px;
+    margin: 4px auto 0;
+    color: var(--green-dark);
+  }
+  .feature-illus {
+    margin-bottom: 12px;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
+
+<!-- PROMO SECTION -->
+<div class="promo-section">
+  <div class="promo-eyebrow">✦ Solusi Bisnis Modern</div>
+  <h1 class="promo-headline">Capek Balas Chat<br>Satu Per Satu?</h1>
+  <p class="promo-sub">Ratusan pesan masuk setiap hari, tapi tim Anda keteteran. Pelanggan nunggu lama, order kabur ke kompetitor. Saatnya otomasi!</p>
+
+  <!-- Illustration: Chat flooding -->
+  <div class="illus-wrap">
+    <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:320px;">
+      <defs>
+        <clipPath id="cp1"><rect width="320" height="180" rx="16"/></clipPath>
+      </defs>
+      <rect width="320" height="180" rx="16" fill="#f0fdf4"/>
+
+      <!-- Stressed person icon -->
+      <circle cx="160" cy="72" r="30" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="160" cy="63" r="12" fill="#16a34a" opacity="0.85"/>
+      <path d="M140 90 Q160 105 180 90" fill="#16a34a" opacity="0.7"/>
+      <!-- sweat drops -->
+      <ellipse cx="183" cy="55" rx="4" ry="6" fill="#60a5fa" opacity="0.7" transform="rotate(15,183,55)"/>
+      <ellipse cx="137" cy="52" rx="3" ry="5" fill="#60a5fa" opacity="0.6" transform="rotate(-10,137,52)"/>
+
+      <!-- chat bubbles flying in -->
+      <rect x="10" y="18" width="88" height="28" rx="8" fill="#25D366" opacity="0.85"/>
+      <text x="54" y="36" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="white" font-weight="700">Harga berapa kak? 🙏</text>
+      <polygon points="22,46 10,54 30,46" fill="#25D366" opacity="0.85"/>
+
+      <rect x="222" y="10" width="88" height="28" rx="8" fill="#25D366" opacity="0.8"/>
+      <text x="266" y="28" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="white" font-weight="700">Masih ada stok gak?</text>
+      <polygon points="300,38 310,48 290,38" fill="#25D366" opacity="0.8"/>
+
+      <rect x="30" y="120" width="90" height="28" rx="8" fill="#25D366" opacity="0.75"/>
+      <text x="75" y="138" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="white" font-weight="700">Bisa COD gak kak?</text>
+      <polygon points="42,148 30,158 50,148" fill="#25D366" opacity="0.75"/>
+
+      <rect x="210" y="118" width="96" height="28" rx="8" fill="#25D366" opacity="0.9"/>
+      <text x="258" y="136" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="white" font-weight="700">Kapan bisa dikirim? 🚚</text>
+      <polygon points="290,146 305,155 285,146" fill="#25D366" opacity="0.9"/>
+
+      <!-- Notification badge -->
+      <circle cx="195" cy="35" r="14" fill="#ef4444"/>
+      <text x="195" y="40" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="white" font-weight="800">99+</text>
+    </svg>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-pill">📩 Rata-rata 200+ chat/hari</div>
+    <div class="stat-pill">⏱ Pelanggan tunggu 2–4 jam</div>
+    <div class="stat-pill">💸 30% order hilang karena slow respon</div>
+  </div>
+
+  <div class="pain-points">
+    <div class="pain-item"><span class="pain-icon">😩</span> Tim CS kelelahan balas chat berulang-ulang</div>
+    <div class="pain-item"><span class="pain-icon">🌙</span> Tidak ada yang balas saat malam & weekend</div>
+    <div class="pain-item"><span class="pain-icon">📉</span> Calon pembeli kabur ke toko lain yang lebih responsif</div>
+  </div>
+
+  <div class="section-divider">
+    Chatbot WA hadir sebagai solusinya
+    <span class="arrow-down">↓</span>
+  </div>
+</div>
+
+<!-- SOLUTION VISUAL BRIDGE -->
+<div style="background: white; padding: 32px 24px 0; text-align:center; border-bottom: 1px solid var(--border);">
+  <div style="max-width:480px; margin:0 auto;">
+    <div style="font-size:13px; font-weight:700; color: var(--green-dark); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Sebelum vs Sesudah</div>
+
+    <svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:340px; margin-bottom:24px;">
+      <!-- Before card -->
+      <rect x="4" y="4" width="148" height="122" rx="12" fill="#fff5f5" stroke="#fca5a5" stroke-width="1"/>
+      <text x="78" y="24" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#dc2626" font-weight="700">SEBELUM</text>
+      <!-- clock -->
+      <circle cx="78" cy="58" r="18" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.2"/>
+      <line x1="78" y1="45" x2="78" y2="58" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+      <line x1="78" y1="58" x2="88" y2="63" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+      <text x="78" y="92" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#dc2626" font-weight="600">Balas manual</text>
+      <text x="78" y="106" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#ef4444">Lambat &amp; terbatas</text>
+
+      <!-- Arrow -->
+      <text x="170" y="70" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="22" fill="#128C7E">→</text>
+
+      <!-- After card -->
+      <rect x="188" y="4" width="148" height="122" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+      <text x="262" y="24" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#15803d" font-weight="700">SESUDAH</text>
+      <!-- robot icon -->
+      <rect x="249" y="35" width="26" height="20" rx="5" fill="#22c55e" opacity="0.9"/>
+      <circle cx="255" cy="43" r="3" fill="white"/>
+      <circle cx="269" cy="43" r="3" fill="white"/>
+      <rect x="256" y="49" width="12" height="2" rx="1" fill="white" opacity="0.7"/>
+      <rect x="260" y="30" width="4" height="5" rx="2" fill="#16a34a"/>
+      <!-- legs -->
+      <rect x="253" y="55" width="4" height="8" rx="2" fill="#22c55e" opacity="0.7"/>
+      <rect x="267" y="55" width="4" height="8" rx="2" fill="#22c55e" opacity="0.7"/>
+      <text x="262" y="82" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#15803d" font-weight="600">Otomatis 24 Jam</text>
+      <text x="262" y="96" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#16a34a">Cepat &amp; konsisten</text>
+      <text x="262" y="113" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#15803d" font-weight="700">⚡ Tanpa henti</text>
+    </svg>
+  </div>
+</div>
 
 <div class="hero">
   <span class="wa-icon-big">💬</span>
@@ -283,6 +473,37 @@
   <div class="section">
     <div class="section-title">Apa yang Anda Dapat?</div>
     <div class="section-sub">Chatbot WA siap pakai untuk bisnis Anda</div>
+
+    <!-- Features illustration -->
+    <div class="feature-illus">
+      <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:320px; margin-bottom:8px;">
+        <!-- Timeline bar -->
+        <rect x="20" y="48" width="280" height="4" rx="2" fill="#dcfce7"/>
+        <!-- Nodes -->
+        <circle cx="60" cy="50" r="14" fill="#25D366"/>
+        <text x="60" y="55" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="14" fill="white">🤖</text>
+        <text x="60" y="75" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#128C7E" font-weight="700">AUTO</text>
+        <text x="60" y="86" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#64748b">24 Jam</text>
+
+        <circle cx="160" cy="50" r="14" fill="#128C7E"/>
+        <text x="160" y="55" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="14" fill="white">⚙️</text>
+        <text x="160" y="75" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#128C7E" font-weight="700">CUSTOM</text>
+        <text x="160" y="86" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#64748b">Nama Bisnis</text>
+
+        <circle cx="260" cy="50" r="14" fill="#0a6b3d"/>
+        <text x="260" y="55" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="14" fill="white">📲</text>
+        <text x="260" y="75" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#128C7E" font-weight="700">AKTIF</text>
+        <text x="260" y="86" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#64748b">Siap Pakai</text>
+
+        <!-- checkmarks above nodes -->
+        <circle cx="60" cy="28" r="7" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+        <text x="60" y="33" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#16a34a">✓</text>
+        <circle cx="160" cy="28" r="7" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+        <text x="160" y="33" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#16a34a">✓</text>
+        <circle cx="260" cy="28" r="7" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+        <text x="260" y="33" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#16a34a">✓</text>
+      </svg>
+    </div>
 
     <div class="feature-card">
       <div class="feature-icon">🤖</div>
@@ -337,6 +558,36 @@
   <div class="section">
     <div class="section-title">Cara Mulai</div>
     <div class="section-sub">3 langkah simpel, selesai dalam hitungan menit</div>
+
+    <!-- Steps illustration -->
+    <div style="text-align:center; margin-bottom:16px;">
+      <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:320px;">
+        <!-- connector lines -->
+        <line x1="80" y1="38" x2="130" y2="38" stroke="#bbf7d0" stroke-width="3" stroke-dasharray="5,4"/>
+        <line x1="190" y1="38" x2="240" y2="38" stroke="#bbf7d0" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- Step 1 -->
+        <circle cx="55" cy="38" r="26" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+        <text x="55" y="34" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="18">💬</text>
+        <text x="55" y="50" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#15803d" font-weight="700">Kirim WA</text>
+        <rect x="38" y="60" width="34" height="14" rx="7" fill="#25D366"/>
+        <text x="55" y="71" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="white" font-weight="700">Trial Gratis</text>
+
+        <!-- Step 2 -->
+        <circle cx="160" cy="38" r="26" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+        <text x="160" y="34" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="18">💳</text>
+        <text x="160" y="50" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#15803d" font-weight="700">Bayar</text>
+        <rect x="143" y="60" width="34" height="14" rx="7" fill="#128C7E"/>
+        <text x="160" y="71" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="white" font-weight="700">Rp 350rb</text>
+
+        <!-- Step 3 -->
+        <circle cx="265" cy="38" r="26" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+        <text x="265" y="34" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="18">🚀</text>
+        <text x="265" y="50" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#15803d" font-weight="700">Aktif!</text>
+        <rect x="248" y="60" width="34" height="14" rx="7" fill="#0a6b3d"/>
+        <text x="265" y="71" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="white" font-weight="700">Langsung</text>
+      </svg>
+    </div>
 
     <div class="steps">
       <div class="step">
